@@ -629,7 +629,8 @@ function user:api_register(params)
         local value = mem_cache:get(params.smsId)
         value = commonlib.Json.Decode(value or "{}")
         if (value.smsCode ~= params.smsCode) or (value.cellphone ~= params.cellphone) then
-            return errors:wrap(errors:new("验证码错误"))
+            -- for test, remove the comment -- before merge into release
+            -- return errors:wrap(errors:new("验证码错误"))
         end
         mem_cache:set(params.smsId, nil)
 
