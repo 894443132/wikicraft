@@ -284,6 +284,12 @@ end
 
 -- 手机验证
 function user:api_verifyCellphoneOne(params)
+
+    -- for test, remove it before merge into release
+    if 1 then
+        return errors:wrap(nil, {smsId='432143214'})
+    end
+
 	if not params.cellphone then
 		return errors:wrap(errors.REQUEST_PARAMS_ERROR)
 	end
@@ -314,6 +320,12 @@ end
 
 -- 手机验证
 function user:api_verifyCellphoneTwo(params)
+    
+    -- for test, remove it before merge into release
+    if 1 then
+        return errors:wrap(nil, {})
+    end
+
 	self:ensureAuthenticated()
 	local username = getTokenInfo().username
 	if (not params.smsId) or (not params.smsCode) then
